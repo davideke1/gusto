@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
       {
-        "src": "main/wsgi.py",
+        "src": "gusto2024/wsgi.py",
         "use": "@vercel/python",
         "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
       },
@@ -25,7 +25,7 @@
       },
       {
         "src": "/(.*)",
-        "dest": "main/wsgi.py"
+        "dest": "gusto2024/wsgi.py"
       }
     ]
   }
