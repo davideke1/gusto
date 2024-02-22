@@ -1,0 +1,84 @@
+{#{% extends 'base.html' %}#}
+{##}
+{#{% block title %}Participating Teams - GUSTO 2024{% endblock %}#}
+{##}
+{#{% block content %}#}
+{#<section id="teams">#}
+{#    <!-- Details about participating teams go here -->#}
+{#    <h2>Participating Teams</h2>#}
+{#    <ul>#}
+{#        <li>Team 1</li>#}
+{#        <li>Team 2</li>#}
+{#        <!-- Add more teams as needed -->#}
+{#    </ul>#}
+{#</section>#}
+{#{% endblock %}#}
+
+{% extends 'base.html' %}
+
+{% block title %}Participating Teams - GUSTO 2024{% endblock %}
+
+{% block content %}
+<section id="teams">
+    <!-- Details about participating teams go here -->
+    <h2>Participating Teams</h2>
+
+    <div class="sport-buttons">
+        <label for="sport-filter">Filter by Sport:</label>
+        <select id="sport-filter" name="sport" onchange="this.form.submit()">
+            <option value="" {% if not selected_sport %}selected{% endif %}>All Sports</option>
+            {% for sport in sports %}
+                <option value="{{ sport.name }}" {% if sport.name == selected_sport %}selected{% endif %}>{{ sport.name }}</option>
+            {% endfor %}
+        </select>
+
+        <br>
+
+        {% for sport in sports %}
+            <button class="sport-button{% if sport.name == selected_sport %} active{% endif %}" onclick="filterTeams('{{ sport.name }}')">
+                {{ sport.name }}
+            </button>
+        {% endfor %}
+    </div>
+
+    <ul id="team-list">
+        {% for team in teams %}
+            <li>{{ team.college.name }} - {{ team.sport.name }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<script>
+function filterTeams(sport) {
+    document.getElementById('sport-filter').value = sport;
+    document.getElementById('sport-filter').form.submit();
+
+    // Highlight the clicked button
+    var buttons = document.getElementsByClassName('sport-button');
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove('active');
+    }
+    var activeButton = document.querySelector('.sport-button.active');
+    if (activeButton) {
+        activeButton.classList.remove('active');
+    }
+    var clickedButton = document.querySelector('.sport-button.' + sport.toLowerCase());
+    if (clickedButton) {
+        clickedButton.classList.add('active');
+    }
+
+    // Filter the teams based on the selected sport
+    var teamList = document.getElementById('team-list');
+    var teams = teamList.getElementsByTagName('li');
+    for (var i = 0; i < teams.length; i++) {
+        var team = teams[i];
+        if (sport == 'All Sports' || team.textContent.includes(sport)) {
+            team.style.display = 'list-item';
+        } else {
+            team.style.display = 'none';
+        }
+    }
+}
+</script>
+
+{% endblock %}

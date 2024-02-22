@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for message in messages %}
+    <p class="success">{{ message }}</p>
+  {% endfor %}
+  <h2>Success!</h2>
+  <p>{{ messages }}</p>
+  <script>
+    setTimeout(function() {
+      window.location.href = "{% url 'home' %}";  // Replace 'home' with the actual name or URL of your homepage
+    }, 3000);  // 3000 milliseconds = 3 seconds
+  </script>
+{% endblock %}

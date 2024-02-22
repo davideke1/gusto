@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% comment %} {% load custom_filters %} {% endcomment %}
+{% block title %}College Registration - GUSTO 2024{% endblock %}
+
+{% block body_class %}other-page{% endblock %}
+{% block content%}
+<div class="container d-flex justify-content-center align-items-center min-vh-100 register">
+
+    <!----------------------- Registration Container -------------------------->
+
+    <div class="row border rounded-5 p-3 bg-white shadow box-area">
+
+        <!--------------------------- Left Box ----------------------------->
+
+        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #103cbe;">
+            <div class="featured-image mb-3">
+                <img src="{% static 'img/qr.png' %}" class="img-fluid" style="width: 250px; max-width: 100%; margin-top: 10px;" >
+            </div>
+            <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">Scan</p>
+            <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">for registration payment</small>
+        </div>
+        
+        
+
+        <!---------------------- Registration Form ---------------------------->
+    
+        <div class="col-md-6 right-box">
+            <div class="row align-items-center form-group">
+                <div class="header-text mb-4">
+                    <h2>College Registration</h2>
+                    <p>Are you ready to bring your A-game?</p>
+                </div>
+                <form method="post" action="{% url 'register' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                
+                    <!-- College Form Fields -->
+                    <div class="input-group mb-3 input-group">
+                        {{ registration_form.name }}
+                    </div>
+                    <div class="input-group mb-3 input-group">
+                        {{ payment_form.reference_code }}
+                    </div>
+
+                    <div class="input-group mb-3 input-group">
+                        {{ registration_form.sport }}
+                    </div>
+                
+                    <!-- Payment Form Fields -->
+                    
+                    <div class="input-group mb-3 input-group">
+                        {{ payment_form.amount }}
+                    </div>
+                    <div class="input-group mb-3 input-group">
+                        {{ payment_form.payment_date }}
+                    </div>
+                
+                    <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Submit</button>
+            </div>
+        </div> 
+
+    </div>
+</div>
+
+{% endblock %}

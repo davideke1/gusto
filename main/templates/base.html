@@ -1,0 +1,161 @@
+{#{% load static %}#}
+{#{% comment %} {% load messages %}  {% endcomment %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <link rel="stylesheet" href="{% static 'css/style.css' %}">#}
+{#    <title>{% block title %}GUSTO 2024{% endblock %}</title>#}
+{#</head>#}
+{#<body>#}
+{#    <header>#}
+{#        <h1>GUSTO 2024</h1>#}
+{#        <nav>#}
+{#            <ul>#}
+{#                <li><a href="{% url 'home' %}">Home</a></li>#}
+{#                <li><a href="{% url 'event' %}">Event</a></li>#}
+{#                <li><a href="{% url 'teams' %}">Participating Teams</a></li>#}
+{#                <li><a href="{% url 'sponsor' %}">Sponsor</a></li>#}
+{#                <li><a href="{% url 'register' %}">Register</a></li>#}
+{#                <li><a href="{% url 'gallery' %}">Gallery</a></li>#}
+{#            </ul>#}
+{#        </nav>#}
+{#    </header>#}
+{#    <main>#}
+{#        {% comment %} {% if messages %}#}
+{#            <div class="messages-container">#}
+{#                {% for message in messages %}#}
+{#                    <div class="alert alert-success">#}
+{#                        {{ message }}#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        {% endif %} {% endcomment %}#}
+{#        {% block content %}{% endblock %}#}
+{#    </main>#}
+{#    <footer>#}
+{#        <!-- Your footer content goes here -->#}
+{#    </footer>#}
+{#    <script src="{% static 'js/script.js' %}"></script>#}
+{#</body>#}
+{#</html>#}
+{##}
+{##}
+{##}
+{##}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>{% block title %}GUSTO 2024{% endblock %}</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles1.css' %}" rel="stylesheet" />
+
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/fonts/fontawesome/font-awesome.min.css' %}">
+		<!-- Vendors
+		<link rel="stylesheet" type="text/css" href="{% static 'assets/vendors/bootstrap/grid.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'assets/vendors/YTPlayer/css/jquery.mb.YTPlayer.min.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'assets/vendors/vegas/vegas.min.css' %}"> -->
+		<!-- App & fonts-->
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Work+Sans:300,400,500,700">
+		{% comment %} <link rel="stylesheet" type="text/css" id="app-stylesheet" href="{% static 'assets/css/main.css' %}"><!--[if lt IE 9]--> {% endcomment %}
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body id="page-top" class="{% block body_class %}home{% endblock %}">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                {% comment %} <a class="navbar-brand" href="#page-top"><img src="{% static 'assets/img/gustologosv.svg' %}" alt="..." /></a> {% endcomment %}
+                <a class="navbar-brand" href="#page-top">
+                    <img src="{% static 'assets/img/gitamlogo1.jpg' %}" style="width: 80px; height: 80px;" alt="..." />
+                    <img src="{% static 'assets/img/logos/sportslogo.png' %}" alt="Director of Sports Logo" class="director-logo" style="width: 80px; height: 80px;">
+                    {% comment %} <span class="director-text d-none d-lg-inline" style="color: white;">Directoriate of Sports</span> {% endcomment %}
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{%  url 'event' %}"  style="white-space: nowrap;">Fixtures & Rules</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{%  url 'complain' %}">Complains</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'coreteam' %}" style="white-space: nowrap;">Core-Team</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        {% comment %} <div class="container-fluid" id="director-of-sports">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <img src="{% static 'assets/img/logos/sportslogo.png' %}" alt="Director of Sports Logo" class="director-logo">
+                        <span class="director-text">Director of Sports</span>
+                    </div>
+                </div>
+            </div>
+        </div> {% endcomment %}
+        <!-- Masthead-->
+        {% block content %}
+        {% endblock %}
+        <!-- Footer-->
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-start">Copyright &copy; GUSTO 2024</div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+               <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.logwork.com/widget/countdown.js"></script>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+        <script type="text/javascript" src="{% static 'assets/vendors/jquery/jquery.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/vendors/jquery.countdown/jquery.countdown.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/vendors/flat-surface-shader/fss.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/vendors/particles.js/particles.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/vendors/waterpipe/waterpipe.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/vendors/quietflow/quietflow.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/vendors/YTPlayer/jquery.mb.YTPlayer.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/vendors/vegas/vegas.min.js' %}"></script>
+
+        <script src="{% static 'js/scripts.js' %}"></script>
+    </body>
+</html>
+
+

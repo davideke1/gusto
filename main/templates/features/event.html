@@ -1,0 +1,215 @@
+{% comment %} {% extends 'base.html' %}
+
+{% block title %}Event - GUSTO 2024{% endblock %}
+
+{% block content %}
+<section id="event">
+    <!-- Event highlights, schedule, and other information go here -->
+    <h2>Event Highlights</h2>
+    <p>Exciting details about the GUSTO 2024 event.</p>
+</section>
+{% endblock %} {% endcomment %}
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sports Information</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+            font-weight: bold;
+            
+        }
+
+        p {
+            color: #343a40;
+            text-align: center;
+            font-weight: 700px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Sport Name (8 columns) -->
+        <div class="col-md-4">
+            <h2>Sport Name</h2>
+            <!-- Replace 'your_django_sport_data' with the actual sport name from your Django backend -->
+            <p>Crciket</p>
+        </div>
+
+        <!-- Fixtures (2 columns) -->
+        <div class="col-md-4">
+            <h2>Fixtures</h2>
+            <!-- Replace 'your_django_fixture_data' with the actual data from your Django backend -->
+            <p>{{ your_django_fixture_data }}</p>
+            <button class="btn btn-primary mt-2" onclick="downloadFile('fixtures')">Download Fixtures</button>
+        </div>
+
+        <!-- Rules and Regulations (2 columns) -->
+        <div class="col-md-4 mt-md-0 mt-4">
+            <h2>Rules and Regulations</h2>
+            <!-- Replace 'your_django_rules_data' with the actual data from your Django backend -->
+            <p>{{ your_django_rules_data }}</p>
+            <button class="btn btn-primary mt-2" onclick="downloadFile('rules')">Download Rules</button>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Function to simulate file download (replace with actual download logic)
+    function downloadFile(type) {
+        alert('Simulating download for ' + type);
+        // You can replace this alert with actual file download logic
+        // For example, you can use window.location.href to trigger a download
+    }
+</script>
+
+</body>
+</html> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Agency - Start Bootstrap Theme</title>
+        <link href="bootstrap.min.css" rel="stylesheet">
+        <!-- Link to FontAwesome CSS file -->
+        <link href="fontawesome.min.css" rel="stylesheet">
+        
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 8px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            button {
+                padding: 6px 12px;
+                border: none;
+                background-color: #4CAF50;
+                color: white;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+            
+        </style>
+    </head>
+    <body id="page-top">
+        
+        <!-- Fixture & Rules -->
+    
+
+    <h2>Sports Fixtures and Rules</h2>
+
+    <table>
+        <tr>
+            <th>Sport</th>
+            <th>Fixtures</th>
+            <th>Rules</th>
+        </tr>
+        {% for sport_info in sports_info %}
+            <tr>
+                <td>{{ sport_info.sport.name }}</td>
+                <td>
+                    {% if sport_info.fixtures %}
+                        <a href="{{ sport_info.fixtures.url }}" download>
+                            <button>Fixtures</button>
+                        </a>
+                    {% else %}
+                        No fixtures available
+                    {% endif %}
+                </td>
+                <td>
+                    {% if sport_info.rules_and_regulations %}
+                        <a href="{{ sport_info.rules_and_regulations.url }}" download>
+                            <button>Rules</button>
+                        </a>
+                    {% else %}
+                        No rules available
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+
+    
+
+
+    </table>
+
+        <!-- Footer-->
+       
+        
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

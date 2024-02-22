@@ -1,0 +1,364 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<header class="masthead">
+    <div class="video-container">
+    <video autoplay muted loop playsinline poster="{% static 'video/final.mp4' %}" id="background-video">
+        <source src="{% static 'video/final.mp4' %}" type="video/mp4">
+        <!-- Add additional source elements for different video formats (webm, ogg, etc.) -->
+        Your browser does not support the video tag.
+    </video>
+</div>
+<div class="container1">
+    <div class="overlay"></div>
+    <div class="masthead-subheading" style="font-size: 2.5em;">GUSTO <span class="text-color-secondary">2024</span></div>
+    <div class="masthead-heading text-uppercase" style="font-size: 1.2em;">GITAM Hyderabad Annual Flagship Sports Fest</div>
+    <div class="background-overlay"></div>
+    <a class="btn btn-primary btn-xl text-uppercase btn-register" href="{% url 'register' %}">Register</a>
+</div>
+
+</header>
+<!--Countdown-->
+<section class="page-section" id="services">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Countdown to GUSTO 2024</h2>
+            <h3 class="section-subheading text-muted">Get ready for an electrifying experience! <br>Thrilling competitions, incredible performances, and unforgettable moments await you at GUSTO 2024!</h3>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-12">
+                <div class="card" style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9Gjtgf-i7fvCuIP3std_CWY8TMre14ihN0BN6QRLXxg&s?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb); background-size: auto;">
+                    <div class="card-body">
+                        
+                        <div class="countdown__module hide" data-date="2024/3/13">
+                            <p><span>%D</span> Days</p>
+                            <p><span>%H</span> Hours</p>
+                            <p><span>%M</span> Minutes</p>
+                            <p><span>%S</span> Seconds</p>
+                        </div><!-- End / countdown__module hide undefined -->
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Event Grid-->
+<section class="page-section bg-light" id="portfolio">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Events</h2>
+            <h3 class="section-subheading text-muted">GUSTO 2024 Events</h3>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- Portfolio item 1-->
+                <div class="portfolio-item">
+                    <!-- <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1"> -->
+                        <!-- <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                        </div> -->
+                        <img class="img-fluid" src="{% static 'assets/img/portfolio/football.jpg' %}"  alt="..." />
+                    <!-- </a> -->
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Football</div>
+                        <div class="portfolio-caption-subheading text-muted">Men & Women</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- Portfolio item 2-->
+                <div class="portfolio-item">   
+                        <img class="img-fluid" src="{% static 'assets/img/portfolio/cricket1.jpg' %}" alt="..." />
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Cricket</div>
+                        <div class="portfolio-caption-subheading text-muted">Men</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- Portfolio item 3-->
+                <div class="portfolio-item">
+                   
+                        <img class="img-fluid" src="{% static 'assets/img/portfolio/tt.jpg' %}" alt="..." />
+                    
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Table Tennis</div>
+                        <div class="portfolio-caption-subheading text-muted">Men & Women</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4 ">
+                <!-- Portfolio item 4-->
+                <div class="portfolio-item">
+                    
+                        <img class="img-fluid" src="{% static 'assets/img/portfolio/throwball.jpg' %}" alt="..." />
+                    
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Throwball</div>
+                        <div class="portfolio-caption-subheading text-muted">Women</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4 ">
+                <!-- Portfolio item 5-->
+                <div class="portfolio-item">
+                        <img class="img-fluid" src="{% static 'assets/img/portfolio/basketball.jpg' %}" alt="..." />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Badminton</div>
+                        <div class="portfolio-caption-subheading text-muted">Men & Women</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- Portfolio item 6-->
+                <div class="portfolio-item">
+                    
+                        <img class="img-fluid" src="{% static 'assets/img/portfolio/chess.jpg' %}" alt="..." />
+                    
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Chess</div>
+                        <div class="portfolio-caption-subheading text-muted">Men & Women</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-lg-0">
+                <!-- Portfolio item 6-->
+                <div class="portfolio-item">
+                    
+                        <img class="img-fluid" src="{% static 'assets/img/portfolio/volleyball.jpg' %}" alt="..." />
+                    
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Volleyball</div>
+                        <div class="portfolio-caption-subheading text-muted">Women</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-sm-0">
+                <!-- Portfolio item 6-->
+                <div class="portfolio-item">
+                    
+                        <img class="img-fluid" src="{% static 'assets/img/portfolio/throwball.jpg' %}" alt="..." />
+                    
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Throwball</div>
+                        <div class="portfolio-caption-subheading text-muted">Women</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <!-- Portfolio item 6-->
+                <div class="portfolio-item">
+                    
+                        <img class="img-fluid" src="{% static 'assets/img/portfolio/kabaddi.jpg' %}" alt="..." />
+                    
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Kabaddi</div>
+                        <div class="portfolio-caption-subheading text-muted">Men & Women</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About-->
+<section class="page-section" id="about">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Timeline</h2>
+            <h3 class="section-subheading text-muted">Journey through the heart-pounding timeline of GUSTO 2024, where each moment marks a chapter in the exhilarating tale of sportsmanship and triumph.</h3>
+        </div>
+        <ul class="timeline">
+            <li>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/1.jpg' %}" alt="..." /></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>February 20</h4>
+                        <h4 class="subheading">Registrations starts</h4>
+                    </div>
+                    <div class="timeline-body"><p class="text-muted">Are you ready to be a part of the most thrilling sports fest of the year? Registration for Gusto 2024 is now officially open, and we invite you to secure your spot in this unforgettable event.</p></div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/2.jpg' %}" alt="..." /></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>March 11</h4>
+                        <h4 class="subheading">Registration ends</h4>
+                    </div>
+                    <div class="timeline-body"><p class="text-muted">Don't wait until the last minute! Ensure your participation in Gusto 2024 by completing your registration before the deadline on March 11th. </p></div>
+                </div>
+            </li>
+            <li>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/3.jpg' %}" alt="..." /></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>March 13</h4>
+                        <h4 class="subheading">GUSTO 2024 begins</h4>
+                    </div>
+                    <div class="timeline-body"><p class="text-muted">The wait is over, and the excitement is about to unfold! GUSTO 2024, our much-anticipated annual sports fest, is set to kick off on March 13th, 2024. Prepare yourself for a spectacular showcase of talent, teamwork, and sheer sportsmanship.</p></div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/4.jpg' %}" alt="..." /></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>March 15</h4>
+                        <h4 class="subheading">GUSTO 2024 ends</h4>
+                    </div>
+                    <div class="timeline-body"><p class="text-muted">As we've immersed ourselves in the thrilling journey of GUSTO 2024, the time has come for the grand finale! The fest, filled with incredible sportsmanship, teamwork, and memorable moments, will conclude on March 15th, 2024.</p></div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-image">
+                    <h4>
+                        Be Part
+                        <br />
+                        Of
+                        <br />
+                        GuSTO 2024!
+                    </h4>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+<!-- Team-->
+<section class="page-section bg-light" id="team">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Gallery</h2>
+            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        
+    </div>
+    <div class="isolated-container">
+        <div class="container2">
+            <div class="swiper tranding-slider">
+                <div class="swiper-wrapper">
+                    {% for slide in carousel_slides %}
+                        <div class="swiper-slide tranding-slide">
+                            <div class="tranding-slide-img">
+                                <!-- Use the image field of CarouselSlide model -->
+                                <img src="{{ slide.image.url }}" alt="{{ slide.alt_text }}">
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+    
+                <div class="tranding-slider-control">
+                    <div class="swiper-button-prev slider-arrow">
+                        <ion-icon name="arrow-back-outline"></ion-icon>
+                    </div>
+                    <div class="swiper-button-next slider-arrow">
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Clients-->
+<div class="py-5">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Sponsors</h2>
+            
+        </div>
+        <div class="row align-items-center">
+            <div class="col-md-3 col-sm-6 my-3">
+                <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="{% static 'assets/img/logos/microsoft.svg' %}" alt="..." aria-label="Microsoft Logo" /></a>
+            </div>
+            <div class="col-md-3 col-sm-6 my-3">
+                <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="{% static 'assets/img/logos/google.svg' %}" alt="..." aria-label="Google Logo" /></a>
+            </div>
+            <div class="col-md-3 col-sm-6 my-3">
+                <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="{% static 'assets/img/logos/facebook.svg' %}" alt="..." aria-label="Facebook Logo" /></a>
+            </div>
+            <div class="col-md-3 col-sm-6 my-3">
+                <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="{% static 'assets/img/logos/ibm.svg' %}" alt="..." aria-label="IBM Logo" /></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact-->
+<section class="page-section" id="contact" style="color: white; text-align: center;">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Contact Us</h2>
+            <h3 class="section-subheading text-muted">Clarify Your Doubts: Reach Out to Us for Any Questions or Concerns.</h3>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <!-- Contact Person 1 -->
+                <div class="contact-person">
+                    <h4>Thapaswi Kota</h4>
+                    <p>Staff convenor</p>
+                    <p class="contact-phone">Phone: xxx-xxx-xxxx</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <!-- Contact Person 2 -->
+                <div class="contact-person">
+                    <h4>Keerthi Kolla</h4>
+                    <p>Position: Student convenor</p>
+                    <p class="contact-phone">Phone: xxx-xxx-xxxx</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <!-- Contact 3 -->
+                <div class="contact-person">
+                    <h4 class="contact-name">Ekechukwu David</h4>
+                    <p class="contact-position">Student convenor</p>
+                    <p class="contact-phone">Phone: xxx-xxx-xxxx</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <!-- Contact 4 -->
+                <div class="contact-person">
+                    <h4 class="contact-name">Sai Manesh</h4>
+                    <p class="contact-position">Competition Coordinator</p>
+                    <p class="contact-phone">Phone: xxx-xxx-xxxx</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <!-- Director of Sports 1 -->
+                <div class="contact-person">
+                    <h4>Director of Sports 1</h4>
+                    <p>Position: Director of Sports</p>
+                    <p class="contact-phone">Phone: xxx-xxx-xxxx</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <!-- Director of Sports 2 -->
+                <div class="contact-person">
+                    <h4>Director of Sports 2</h4>
+                    <p>Position: Director of Sports</p>
+                    <p class="contact-phone">Phone: xxx-xxx-xxxx</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <!-- Director of Sports 3 -->
+                <div class="contact-person">
+                    <h4>Director of Sports 3</h4>
+                    <p>Position: Director of Sports</p>
+                    <p class="contact-phone">Phone: xxx-xxx-xxxx</p>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 text-center">
+                <!-- Complaint Button -->
+                <p class="text-muted">For any game-related grievances, click the button below:</p>
+                <div class="mx-auto">
+                    <button class="btn btn-primary btn-xl text-uppercase">Submit Your Grievance <ion-icon name="arrow-forward-outline"></ion-icon></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock%}
