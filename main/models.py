@@ -5,6 +5,7 @@ from django.db import models
 class College(models.Model):
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=255, blank=True)
+    
     logo = models.ImageField(upload_to='college_logos/', blank=True)
     sports = models.ManyToManyField('Sport', through='Team', related_name='colleges')
 
@@ -108,3 +109,12 @@ class Complaint(models.Model):
 
     def __str__(self):
         return f"Complaint from {self.name} - {self.category.name}"
+    
+class TeamCaptain(models.Model):
+    phone = models.CharField(max_length=20, blank=True)
+    captain_name = models.CharField(max_length=100)
+    college = models.ForeignKey(College, on_delete=models.CASCADE)
+    sport = models.ForeignKey(Sport, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.name} - {self.college.name} - {self.sport.name}"

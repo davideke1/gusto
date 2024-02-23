@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from .forms import  RegistrationForm, PaymentForm,ContactForm,ComplaintForm
+from .forms import  RegistrationForm, PaymentForm,ContactForm,ComplaintForm,TeamCaptainForm
 from .models import College, Team, Sport, Payment,CarouselSlide, TeamMember,SportInformation
-from django.shortcuts import render
 from django.contrib import messages
+
 
 
 from django.shortcuts import render, redirect
@@ -63,15 +63,22 @@ def teams(request):
     return render(request, 'features/teams.html', {'teams': teams, 'sports': sports, 'selected_sport': selected_sport})
 
 
-
 def register(request):
     if request.method == 'POST':
         registration_form = RegistrationForm(request.POST)
         payment_form = PaymentForm(request.POST)
+        team_captain_form = TeamCaptainForm(request.POST)
 
-        if registration_form.is_valid() and payment_form.is_valid():
+        if registration_form.is_valid() and payment_form.is_valid() and team_captain_form.is_valid():
             college = registration_form.save(commit=False)
             college.save()
+
+            # Save the team captain using TeamCaptainForm
+            team_captain = team_captain_form.save(commit=False)
+            team_captain.college = college  # Set college attribute to the actual College instance
+            team_captain.sport = registration_form.cleaned_data['sport']
+            team_captain.save()
+
 
             payment = payment_form.save(commit=False)
             payment.college = college
@@ -83,12 +90,31 @@ def register(request):
     else:
         registration_form = RegistrationForm()
         payment_form = PaymentForm()
+        team_captain_form = TeamCaptainForm()
 
-    return render(request, 'features/register.html', {'registration_form': registration_form, 'payment_form': payment_form})
+    return render(request, 'features/register.html', {'registration_form': registration_form, 'payment_form': payment_form, 'team_captain_form': team_captain_form})
 
+# def register(request):
+#     if request.method == 'POST':
+#         registration_form = RegistrationForm(request.POST)
+#         payment_form = PaymentForm(request.POST)
 
-from django.shortcuts import render
+#         if registration_form.is_valid() and payment_form.is_valid():
+#             college = registration_form.save(commit=False)
+#             college.save()
 
+#             payment = payment_form.save(commit=False)
+#             payment.college = college
+#             payment.save()
+
+#             # Redirect to a success page or do something else
+#             return redirect('home')
+
+#     else:
+#         registration_form = RegistrationForm()
+#         payment_form = PaymentForm()
+
+#     return render(request, 'features/register.html', {'registration_form': registration_form, 'payment_form': payment_form})
 
 def error_404(request, exception):
     return render(request, '404.html', status=404)

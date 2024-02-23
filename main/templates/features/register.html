@@ -12,15 +12,38 @@
         <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #103cbe;">
 
             <div class="col-md-6 text-center mb-4">
-                <button type="button" style="margin-top:30px" class="btn btn-primary btn-round btn-block mb-3 btn-hover-primary btn-primary-custom"  onmouseover="this.style.backgroundColor='#103cbe'; this.style.borderColor='#103cbe';" this.style.color='black' onmouseout="this.style.backgroundColor='#ffc800'; this.style.borderColor='#ffc800';">Click for cricket payment</button>
+                {% comment %} <a href="https://www.google.com" target="_blank" style="text-decoration: none;">
+                    <button type="button" style="margin-top:30px; font-size: 22px;" class="btn btn-primary btn-round btn-block mb-3 btn-hover-primary btn-primary-custom"
+                        onmouseover="this.style.backgroundColor='#103cbe'; this.style.borderColor='#103cbe';" onmouseout="this.style.backgroundColor='#ffc800'; this.style.borderColor='#ffc800';">
+                        Click for cricket payment
+                    </button>
+                </a> {% endcomment %}
 
-                {% comment %} <button type="button" class="btn btn-primary btn-round btn-block mb-3 btn-hover-primary">Link to cricket payment</button> {% endcomment %}
-
-                <button type="button" class="btn btn-outline-primary btn-round btn-block"> Click for other Sports Payment</button>
+                {% comment %} <a href="https://www.google.com" target="_blank" style="text-decoration: none;">
+                    <button type="button" class="btn btn-primary btn-round btn-block mb-3 btn-hover-primary btn-primary-custom" style="margin-top:30px; background-color: #007BFF; color: #FFFFFF; border-color: #007BFF;"
+                        onmouseover="this.style.backgroundColor='#f403fc'; this.style.borderColor='#f403fc';"
+                        onmouseout="this.style.backgroundColor='#007BFF'; this.style.borderColor='#007BFF';">
+                        Click for cricket payment
+                    </button>
+                </a> {% endcomment %}
+                
+                <a href="https://www.google.com" target="_blank" style="text-decoration: none;">
+                    <button type="button" class="btn btn-primary btn-round btn-block mb-3 btn-hover-primary btn-primary-custom" style="margin-top:30px; background-color: #007BFF; color: #FFFFFF; border-color: #007BFF; font-size: 22px;"
+                        onmouseover="this.style.backgroundColor='#fc6b03'; this.style.borderColor='#fc6b03';"
+                        onmouseout="this.style.backgroundColor='#007BFF'; this.style.borderColor='#007BFF';">
+                        Click for cricket payment
+                    </button>
+                </a>
+            
+                <a href="google.com" target="_blank" style="text-decoration: none;">
+                    <button type="button" class="btn btn-outline-primary btn-round btn-block" style="color:white; font-size: 18px;">
+                        Click for other sports payment
+                    </button>
+                </a>
             </div>
         
             <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">GUSTO 2024</p>
-            <small class="text-white text-wrap text-center mb-4" style="width: 17rem; font-family: 'Courier New', Courier, monospace;">click the link below once you are done fill out your information here please ensure you copy your transaction ID</small>
+            <small class="text-white text-wrap text-center mb-4" style="width: 17rem; font-family: 'Courier New', Courier, monospace; font-size:16px;">Once your payment is done come back and fill out your information here please ensure you copy your transaction ID any quries reach out to gusto@gitam.edu</small>
             
         </div>
         
@@ -39,6 +62,14 @@
                     </div>
                     <div class="input-group mb-3 input-group">
                         {{ payment_form.reference_code }}
+                    </div>
+
+                    <div class="input-group mb-3 input-group">
+                        {{ team_captain_form.captain_name }}
+                    </div>
+
+                    <div class="input-group mb-3 input-group">
+                        {{ team_captain_form.phone }}
                     </div>
 
                     <div class="input-group mb-3 input-group">

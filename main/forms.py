@@ -1,7 +1,7 @@
 from datetime import date
 from django.forms.widgets import DateInput
 from django import forms
-from .models import College, Payment, Sport,ContactMessage, Complaint
+from .models import College, Payment, Sport,ContactMessage, Complaint, TeamCaptain
 
 class PaymentForm(forms.ModelForm):
     class Meta:
@@ -26,18 +26,39 @@ class PaymentForm(forms.ModelForm):
                 'value': date.today().strftime('%Y-%m-%d'),
             })
         }
-        
+
+class TeamCaptainForm(forms.ModelForm):
+    class Meta:
+        model = TeamCaptain
+        fields = ['captain_name', 'phone']  # Change 'name' to 'captain_name'
+        widgets = {
+            'captain_name': forms.TextInput(attrs={
+                'class': 'form-control form-control-lg bg-light fs-6',
+                'placeholder': 'Enter Team Captain Name',
+                'required': 'required',
+                'type': 'text'
+            }),
+            'phone': forms.TextInput(attrs={
+                'class': 'form-control form-control-lg bg-light fs-6',
+                'placeholder': 'Enter Team Captain Phone Number',
+                'required': 'required',
+                'type': 'tel',
+            }),
+        }
+
+
 class RegistrationForm(forms.ModelForm):
     sport = forms.ModelChoiceField(
         queryset=Sport.objects.all(),
         widget=forms.Select(attrs={
-            'class':'form-select form-select-lg bg-light fs-6',
-            'required':'required',
+            'class': 'form-select form-select-lg bg-light fs-6',
+            'required': 'required',
             'id': 'id_sport',
-            
         }),
         required=True,
     )
+
+    # team_captain_form = TeamCaptainForm()  # Instantiate TeamCaptainForm
 
     class Meta:
         model = College
@@ -47,14 +68,9 @@ class RegistrationForm(forms.ModelForm):
                 'class': 'form-control form-control-lg bg-light fs-6',
                 'placeholder': 'Enter College Name',
                 'required': 'required',
-                'type' : 'text'
+                'type': 'text'
             }),
         }
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     # Add a disabled option for the 'sport' field
-    #     self.fields['sport'].widget.choices = [('', 'Select Sport (Disabled)')] + list(self.fields['sport'].widget.choices)[1:]
-    #     self.fields['sport'].widget.attrs.update({'disabled': 'disabled'})
 
     def save(self, commit=True):
         name = self.cleaned_data['name']
@@ -65,6 +81,16 @@ class RegistrationForm(forms.ModelForm):
         # Associate the selected sport with the college
         if 'sport' in self.cleaned_data and self.cleaned_data['sport']:
             college.sports.add(self.cleaned_data['sport'])
+
+        # Create a new TeamCaptainForm instance with the POST data
+        team_captain_form = TeamCaptainForm(self.cleaned_data)
+        if team_captain_form.is_valid():
+            team_captain = team_captain_form.save(commit=False)
+            team_captain.college = college
+            team_captain.sport = self.cleaned_data['sport']
+            if commit:
+                team_captain.save()
+                print('Team Captain saved')
 
         # Save the payment using PaymentForm
         payment_form = PaymentForm(self.cleaned_data)
