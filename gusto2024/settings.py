@@ -34,6 +34,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 DEBUG =True
 print(f"DEBUG: {DEBUG}")
+
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh','127.0.0.1']
 
 
