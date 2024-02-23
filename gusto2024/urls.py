@@ -19,11 +19,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-
+from django.conf.urls import handler404,handler500
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('gusto2024/',include('main.urls')),
+    path('',include('main.urls')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL,
@@ -31,4 +31,5 @@ urlpatterns += static(settings.MEDIA_URL,
 # if settings.DEBUG:
 #     urlpatterns += static(settings.MEDIA_URL,
 #                           document_root=settings.MEDIA_ROOT)
-# handler404 = "main.views.page_not_found_view"
+handler404 = "main.views.error_404"
+handler500 = 'main.views.error_500'

@@ -1,49 +1,3 @@
-{#{% load static %}#}
-{#{% comment %} {% load messages %}  {% endcomment %}#}
-{#<!DOCTYPE html>#}
-{#<html lang="en">#}
-{#<head>#}
-{#    <meta charset="UTF-8">#}
-{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
-{#    <link rel="stylesheet" href="{% static 'css/style.css' %}">#}
-{#    <title>{% block title %}GUSTO 2024{% endblock %}</title>#}
-{#</head>#}
-{#<body>#}
-{#    <header>#}
-{#        <h1>GUSTO 2024</h1>#}
-{#        <nav>#}
-{#            <ul>#}
-{#                <li><a href="{% url 'home' %}">Home</a></li>#}
-{#                <li><a href="{% url 'event' %}">Event</a></li>#}
-{#                <li><a href="{% url 'teams' %}">Participating Teams</a></li>#}
-{#                <li><a href="{% url 'sponsor' %}">Sponsor</a></li>#}
-{#                <li><a href="{% url 'register' %}">Register</a></li>#}
-{#                <li><a href="{% url 'gallery' %}">Gallery</a></li>#}
-{#            </ul>#}
-{#        </nav>#}
-{#    </header>#}
-{#    <main>#}
-{#        {% comment %} {% if messages %}#}
-{#            <div class="messages-container">#}
-{#                {% for message in messages %}#}
-{#                    <div class="alert alert-success">#}
-{#                        {{ message }}#}
-{#                    </div>#}
-{#                {% endfor %}#}
-{#            </div>#}
-{#        {% endif %} {% endcomment %}#}
-{#        {% block content %}{% endblock %}#}
-{#    </main>#}
-{#    <footer>#}
-{#        <!-- Your footer content goes here -->#}
-{#    </footer>#}
-{#    <script src="{% static 'js/script.js' %}"></script>#}
-{#</body>#}
-{#</html>#}
-{##}
-{##}
-{##}
-{##}
 
 {% load static %}
 <!DOCTYPE html>
@@ -65,7 +19,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/styles1.css' %}" rel="stylesheet" />
 
-        <link rel="stylesheet" type="text/css" href="{% static 'assets/fonts/fontawesome/font-awesome.min.css' %}">
+        {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'assets/fonts/fontawesome/font-awesome.min.css' %}"> {% endcomment %}
 		<!-- Vendors
 		<link rel="stylesheet" type="text/css" href="{% static 'assets/vendors/bootstrap/grid.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'assets/vendors/YTPlayer/css/jquery.mb.YTPlayer.min.css' %}">
@@ -101,16 +55,7 @@
                 </div>
             </div>
         </nav>
-        {% comment %} <div class="container-fluid" id="director-of-sports">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <img src="{% static 'assets/img/logos/sportslogo.png' %}" alt="Director of Sports Logo" class="director-logo">
-                        <span class="director-text">Director of Sports</span>
-                    </div>
-                </div>
-            </div>
-        </div> {% endcomment %}
+ 
         <!-- Masthead-->
         {% block content %}
         {% endblock %}

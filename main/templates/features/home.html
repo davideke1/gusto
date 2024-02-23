@@ -4,11 +4,11 @@
 {% block content %}
 <header class="masthead">
     <div class="video-container">
-    <video autoplay muted loop playsinline poster="{% static 'video/final.mp4' %}" id="background-video">
-        <source src="{% static 'video/final.mp4' %}" type="video/mp4">
-        <!-- Add additional source elements for different video formats (webm, ogg, etc.) -->
-        Your browser does not support the video tag.
-    </video>
+        <video autoplay muted loop playsinline  id="background-video">
+            <source src="https://res.cloudinary.com/docgl2qgv/video/upload/v1708674254/background.mp4" type="video/mp4">
+            <!-- Add additional source elements for different video formats (webm, ogg, etc.) -->
+            Your browser does not support the video tag.
+        </video>
 </div>
 <div class="container1">
     <div class="overlay"></div>
@@ -270,7 +270,7 @@
             
         </div>
         <div class="row align-items-center">
-            <div class="col-md-3 col-sm-6 my-3">
+            {% comment %} <div class="col-md-3 col-sm-6 my-3">
                 <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="{% static 'assets/img/logos/microsoft.svg' %}" alt="..." aria-label="Microsoft Logo" /></a>
             </div>
             <div class="col-md-3 col-sm-6 my-3">
@@ -281,7 +281,7 @@
             </div>
             <div class="col-md-3 col-sm-6 my-3">
                 <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="{% static 'assets/img/logos/ibm.svg' %}" alt="..." aria-label="IBM Logo" /></a>
-            </div>
+            </div> {% endcomment %}
         </div>
     </div>
 </div>

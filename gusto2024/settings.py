@@ -10,10 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
+import cloudinary
+import cloudinary_storage
 
 from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,9 +30,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = bool(os.getenv('DEBUG', False))
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh','*']
+# SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
+DEBUG =True
+print(f"DEBUG: {DEBUG}")
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh','127.0.0.1']
 
 
 # Application definition
@@ -42,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -113,7 +120,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'docgl2qgv',
+    'API_KEY': '552598989339855',
+    'API_SECRET': 'uBJOODL5a8S7SGPE5wwFu-CGOds',
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -142,6 +153,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'

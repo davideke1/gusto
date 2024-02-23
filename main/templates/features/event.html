@@ -144,7 +144,7 @@
 
     <h2>Sports Fixtures and Rules</h2>
 
-    <table>
+    <table border="1">
         <tr>
             <th>Sport</th>
             <th>Fixtures</th>
@@ -155,8 +155,8 @@
                 <td>{{ sport_info.sport.name }}</td>
                 <td>
                     {% if sport_info.fixtures %}
-                        <a href="{{ sport_info.fixtures.url }}" download>
-                            <button>Fixtures</button>
+                        <a href="{{ sport_info.fixtures.url }}" download onclick="showDownloadAlert('Fixtures')">
+                            <button>Download Fixtures</button>
                         </a>
                     {% else %}
                         No fixtures available
@@ -164,8 +164,8 @@
                 </td>
                 <td>
                     {% if sport_info.rules_and_regulations %}
-                        <a href="{{ sport_info.rules_and_regulations.url }}" download>
-                            <button>Rules</button>
+                        <a href="{{ sport_info.rules_and_regulations.url }}" download onclick="showDownloadAlert('Rules')">
+                            <button>Download Rules</button>
                         </a>
                     {% else %}
                         No rules available
@@ -173,11 +173,14 @@
                 </td>
             </tr>
         {% endfor %}
-
-    
-
-
     </table>
+
+    <script>
+        function showDownloadAlert(fileType) {
+            // Show a browser alert message
+            window.alert(fileType + ' download is complete!');
+        }
+    </script>
 
         <!-- Footer-->
        
