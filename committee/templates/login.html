@@ -1,4 +1,5 @@
 <!-- templates/login.html -->
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,9 +112,11 @@ body {
     </style>
 </head>
 <body>
-    <div style="text-align: center; margin-top: 100px;">
-        <h2>Welcome, User!</h2>
-  <p>Please log in</p>
+    
+    <div style="text-align: center;">
+        <img src="{% static 'assets/img/about/5.png' %}" alt="GUSTO 2024" class="img-fluid custom-image" style="max-width: 25%; height: 10%;">
+        <h2>Welcome, Core Committee!</h2>
+        <p>Please log in</p>
         <!-- Display error messages if any -->
         {% for message in messages %}
             <p style="color: red;">{{ message }}</p>
@@ -122,10 +125,10 @@ body {
             {% csrf_token %}
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required placeholder="Username"><br>
-
+    
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required placeholder="Password"><br>
-
+    
             <input type="submit" Value="Log In">
         </form>
     </div>
