@@ -1,78 +1,59 @@
 {% extends 'base.html' %}
 {% load static %}
-{% comment %} {% load custom_filters %} {% endcomment %}
 {% block title %}Complains - GUSTO 2024{% endblock %}
-{% comment %} {% block content%}
-<div class="container">
-    <h2>Sports Fest Complaint Form</h2>
-    <form action="submit_complaint.php" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="phone">Phone Number:</label>
-        <input type="text" id="phone" name="phone" required>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="college">College Name:</label>
-        <input type="text" id="college" name="college" required>
-
-        <label for="category">Sports Category:</label>
-        <select id="category" name="category" required>
-            <option value="">Select Category</option>
-            <option value="Football">Football</option>
-            <option value="Basketball">Basketball</option>
-            <option value="Cricket">Cricket</option>
-            <!-- Add more options as needed -->
-        </select>
-
-        <label for="complaint">Complaint:</label>
-        <textarea id="complaint" name="complaint" required></textarea>
-
-        <input type="submit" value="Submit Complaint">
-    </form>
-</div>
-
-{% endblock %} {% endcomment %}
 
 {% block content %}
-  <h2 style="margin-top:100px;">Sports Fest Complaint Form</h2>
-  <form method="post" action="{% url 'complain' %}">
-    {% csrf_token %}
-    
-    <div>
-      <label for="{{ form.name.id_for_label }}">Name:</label>
-      {{ form.name }}
+<div class="container d-flex justify-content-center align-items-center min-vh-100" style="margin-top: 100px;">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="header-text mb-4 text-center">
+                <h2 >Sports Fest Complaint Form</h2>
+            </div>
+            <form method="post" action="{% url 'complain' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="{{ form.name.id_for_label }}" class="form-label">Your Name:</label>
+                    {{ form.name }}
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}" class="form-label">Your Email:</label>
+                    {{ form.email }}
+                </div>
+
+                <!-- Phone Number Field -->
+                <div class="form-group">
+                    <label for="{{ form.phone.id_for_label }}" class="form-label">Your Phone Number:</label>
+                    {{ form.phone }}
+                </div>
+
+                <!-- College Name Field -->
+                <div class="form-group">
+                    <label for="{{ form.college.id_for_label }}" class="form-label">Your College Name:</label>
+                    {{ form.college }}
+                </div>
+
+                <!-- Sport Field -->
+                <div class="form-group">
+                    <label for="{{ form.category.id_for_label }}" class="form-label">Selected Sport:</label>
+                    {{ form.category }}
+                </div>
+
+                <!-- Complaint Field -->
+                <div class="form-group">
+                    <label for="{{ form.complaint.id_for_label }}" class="form-label">Your Complaint:</label>
+                    {{ form.complaint }}
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary btn-lg fs-6">Submit Complaint</button>
+                </div>
+            </form>
+        </div>
     </div>
-
-    <div>
-      <label for="{{ form.phone.id_for_label }}">Phone Number:</label>
-      {{ form.phone }}
-    </div>
-
-    <div>
-      <label for="{{ form.email.id_for_label }}">Email:</label>
-      {{ form.email }}
-    </div>
-
-    <div>
-      <label for="{{ form.college.id_for_label }}">College Name:</label>
-      {{ form.college }}
-    </div>
-
-    <div>
-      <label for="{{ form.category.id_for_label }}">Sports Category:</label>
-      {{ form.category }}
-    </div>
-
-    <div>
-      <label for="{{ form.complaint.id_for_label }}">Complaint:</label>
-      {{ form.complaint }}
-    </div>
-
-    <input type="submit" value="Submit Complaint">
-
-  </form>
+</div>
 {% endblock %}
-

@@ -122,6 +122,42 @@ class ComplaintForm(forms.ModelForm):
         model = Complaint
         fields = ['name', 'phone', 'email', 'college', 'category', 'complaint']
 
+    widgets = {
+        'name': forms.TextInput(attrs={
+            'class': 'form-control form-control-lg bg-light fs-6',
+            'placeholder': 'Enter Name',
+            'required': 'required',
+            'type': 'text'
+        }),
+        'phone': forms.TextInput(attrs={
+            'class': 'form-control form-control-lg bg-light fs-6',
+            'placeholder': 'Enter Phone Number',
+            'required': 'required',
+            'type': 'tel',
+        }),
+        'email': forms.TextInput(attrs={
+            'class': 'form-control form-control-lg bg-light fs-6',
+            'placeholder': 'Enter email',
+            'required': 'required',
+            'type': 'email',
+        }),
+        'college': forms.TextInput(attrs={
+            'class': 'form-control form-control-lg bg-light fs-6',
+            'placeholder': 'Enter College',
+            'required': 'required',
+            'type': 'text',
+        }),
+        'category': forms.Select(attrs={
+            'class': 'form-control form-control-lg bg-light fs-6',
+            'required': 'required',
+        }),
+        'complaint': forms.Textarea(attrs={
+            'class': 'form-control form-control-lg bg-light fs-6',
+            'placeholder': 'Make your complains',
+            'required': 'required',
+        }),
+    }
+
     def __init__(self, *args, **kwargs):
         super(ComplaintForm, self).__init__(*args, **kwargs)
         self.fields['category'].queryset = Sport.objects.all()
