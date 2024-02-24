@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            color: #000; /* Black text color */
+            padding-top: 56px; /* Adjust based on your navbar height */
+        }
+
+        .container-fluid {
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        h1 {
+            margin-top: 20px;
+            color: #000; /* Black color for headings */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a.btn {
+            margin-right: 10px;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="{% url 'landing_page' %}">Core Committee</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'all_colleges' %}">Colleges</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'all_payments' %}">Payments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'all_captains' %}">Captains</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'all_complain' %}">Complaints</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'all_team' %}">Sports</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+
+    <div class="container-fluid text-center">
+
+        <h1 id="latest-colleges">Latest College Registration</h1>
+        <ul>
+            {% for college in top_colleges %}
+                <li>{{ college.name }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'all_colleges' %}" class="btn btn-primary">See More</a>
+
+        <h1 id="latest-payments">Latest Payments Made</h1>
+        <ul>
+            {% for payment in top_payments %}
+                <li>{{ payment.reference_code }} - {{ payment.amount }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'all_payments' %}" class="btn btn-primary">See More</a>
+
+        <h1 id="latest-captains">Latest Team captain entry</h1>
+        <ul>
+            {% for team_captain in top_team_captains %}
+                <li>{{ team_captain.captain_name }} - {{ team_captain.phone }} - {{ team_captain.college.name }} - {{ team_captain.sport.name }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'all_captains' %}" class="btn btn-primary">See More</a> 
+
+        <h1 id="latest-complaints">Latest Complaints Made</h1>
+        <ul>
+            {% for complain in top_complaints %}
+                <li>{{ complain.name }} - {{ complain.phone }} - {{ complain.college }} - {{ complain.category.name }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'all_complain' %}" class="btn btn-primary">See More</a>
+        
+
+        <h1 id="registered-sports">Colleges sports registered</h1>
+        <ul>
+            {% for team in top_teams %}
+                <li>{{ team.college.name }} - {{ team.sport.name }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'all_team' %}" class="btn btn-primary">See More</a>
+        
+
+        <!-- Repeat the above pattern for other models -->
+
+    </div>
+
+    <!-- Add Bootstrap JS and Popper.js if needed -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

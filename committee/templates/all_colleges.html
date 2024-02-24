@@ -1,0 +1,62 @@
+
+<!-- Include the Bootstrap CSS link in the head of your HTML file -->
+<head>
+    <!-- Other meta tags... -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>All Payments</title>
+    <style>
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff;
+        }
+    </style>
+
+</head>
+
+<!-- Add Bootstrap classes to the body of your HTML file -->
+<body class="bg-light">
+    <div  style="margin-bottom: 80px;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" href="{% url 'landing_page' %}">Core Committee</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_colleges' %}">Colleges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_payments' %}">Payments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_captains' %}">Captains</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_complain' %}">Complaints</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_team' %}">Sports</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+</div>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h1 class="mb-0">All Colleges</h1>
+            </div>
+    <ul>
+        {% for college in colleges %}
+            <li>{{ college.name }}</li>
+        {% endfor %}
+    </ul>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript and jQuery scripts (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>

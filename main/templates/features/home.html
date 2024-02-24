@@ -106,7 +106,7 @@
             <div class="col-lg-4 col-sm-6 mb-4 ">
                 <!-- Portfolio item 5-->
                 <div class="portfolio-item">
-                        <img class="img-fluid" src="{% static 'assets/img/portfolio/basketball.jpg' %}" alt="..." />
+                        <img class="img-fluid" src="{% static 'assets/img/portfolio/bad.jpg' %}" alt="..." />
                     </a>
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">Badminton</div>
@@ -134,7 +134,7 @@
                     
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">Volleyball</div>
-                        <div class="portfolio-caption-subheading text-muted">Women</div>
+                        <div class="portfolio-caption-subheading text-muted">Men</div>
                     </div>
                 </div>
             </div>
@@ -142,11 +142,11 @@
                 <!-- Portfolio item 6-->
                 <div class="portfolio-item">
                     
-                        <img class="img-fluid" src="{% static 'assets/img/portfolio/throwball.jpg' %}" alt="..." />
+                        <img class="img-fluid" src="{% static 'assets/img/portfolio/basketball.jpg' %}" alt="..." />
                     
                     <div class="portfolio-caption">
-                        <div class="portfolio-caption-heading">Throwball</div>
-                        <div class="portfolio-caption-subheading text-muted">Women</div>
+                        <div class="portfolio-caption-heading">Basketball</div>
+                        <div class="portfolio-caption-subheading text-muted">Men</div>
                     </div>
                 </div>
             </div>
@@ -194,7 +194,7 @@
                 </div>
             </li>
             <li>
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/3.jpg' %}" alt="..." /></div>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/5.png' %}" alt="..." /></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
                         <h4>March 13</h4>
@@ -204,7 +204,7 @@
                 </div>
             </li>
             <li class="timeline-inverted">
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/4.jpg' %}" alt="..." /></div>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/5.png' %}" alt="..." /></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
                         <h4>March 15</h4>
@@ -354,9 +354,9 @@
                 <!-- Complaint Button -->
                 <p class="text-muted">For any game-related grievances, click the button below:</p>
                 <div class="mx-auto">
-                    <button class="btn btn-primary btn-xl text-uppercase">Submit Your Grievance <ion-icon name="arrow-forward-outline"></ion-icon></button>
+                    <a href="{% url 'complain' %}" class="btn btn-primary btn-xl text-uppercase">Submit Your Grievance <ion-icon name="arrow-forward-outline"></ion-icon></a>
                 </div>
-            </div>
+            </div>            
         </div>
     </div>
 </section>

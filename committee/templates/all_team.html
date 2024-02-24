@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Registered Teams</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            color: #333; /* Set text color to a dark gray */
+            font-family: 'Arial', sans-serif; /* Use a sans-serif font */
+            background-color: #f8f9fa; /* Light background color */
+            padding-top: 56px; /* Adjust based on your navbar height */
+        }
+
+        .container {
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #fff; /* White container background */
+            border-radius: 10px; /* Add a slight border-radius */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+        }
+
+        h1 {
+            color: #007bff; /* Blue color for headings */
+            margin-bottom: 20px; /* Add some spacing below the heading */
+        }
+
+        ul {
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .list-group-item {
+            margin-bottom: 10px;
+            background-color: #f8f9fa; /* Light gray background color */
+            padding: 12px; /* Add padding for better aesthetics */
+            border-radius: 5px; /* Add a slight border-radius */
+        }
+
+        a.btn {
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            li {
+                display: block; /* On smaller screens, make list items stack vertically */
+                margin-bottom: 15px;
+            }
+        }
+
+        .container ul li span:first-child {
+            font-weight: bold;
+            color: #333; /* Dark gray color for college name */
+        }
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar (assuming you have a fixed-top navbar) -->
+    <div style="margin-bottom: 50px;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" href="{% url 'landing_page' %}">Core Committee</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_colleges' %}">Colleges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_payments' %}">Payments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_captains' %}">Captains</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_complain' %}">Complaints</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_team' %}">Sports</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <form method="get" action="{% url 'all_team' %}">
+            <div class="form-row align-items-center mb-3">
+                <div class="col-lg-6 col-md-8">
+                    <input type="text" class="form-control mb-2 mb-md-0" name="search" placeholder="Search by College">
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <button type="submit" class="btn btn-primary btn-block">Search</button>
+                </div>
+                
+            </div>
+        </form>
+        <h1>All Registered Teams</h1>
+        <ul>
+            {% for college in all_colleges %}
+                <li class='list-group-item'>
+                    <span>{{ college.name }}</span>
+                    <span>
+                        {% for team in college.team_set.all %}
+                            {{ team.sport.name }}
+                            {% if not forloop.last %}, {% endif %} <!-- Add comma between sports -->
+                        {% endfor %}
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+        <!-- Add more content or styling for the "See More" page -->
+
+    </div>
+
+    <!-- Add Bootstrap JS and Popper.js if needed -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

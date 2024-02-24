@@ -1,0 +1,110 @@
+<!-- Include the Bootstrap CSS link in the head of your HTML file -->
+<head>
+    <!-- Other meta tags... -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>All Payments</title>
+    <style>
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff;
+        }
+    </style>
+
+</head>
+
+<!-- Add Bootstrap classes to the body of your HTML file -->
+<body class="bg-light">
+    <div  style="margin-bottom: 80px;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" href="{% url 'landing_page' %}">Core Committee</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_colleges' %}">Colleges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_payments' %}">Payments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_captains' %}">Captains</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_complain' %}">Complaints</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_team' %}">Sports</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+</div>
+    <div class="container mt-5">
+        <div class="form-group">
+            <label for="collegeFilter">Filter by College:</label>
+            <form method="get">
+                <div class="form-row align-items-center">
+                    <div class="col-lg-4 col-md-6 mb-2">
+                        <select name="college" id="collegeFilter" class="form-control">
+                            <option value="all">All Colleges</option>
+                            {% for college in all_colleges %}
+                                <option value="{{ college.name }}" {% if college.name == selected_college %}selected{% endif %}>{{ college.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-lg-2 col-md-6 mb-2">
+                        <button type="submit" class="btn btn-primary btn-block">Filter</button>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h1 class="mb-0">All Payments</h1>
+            </div>
+            <ul class="list-group list-group-flush">
+                {% for payment in payments %}
+                    <li class="list-group-item">
+                        <strong>Reference Code:</strong> {{ payment.reference_code }}<br>
+                        <strong>Amount:</strong> ₹{{ payment.amount }}<br>
+                        <strong>College:</strong> {{ payment.college.name }}<br>
+                        <strong>Payment Date:</strong> {{ payment.payment_date }}
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center mt-4">
+                    {% if payments.has_previous %}
+                        <li class="page-item"><a class="page-link" href="?page=1">&laquo;</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{ payments.previous_page_number }}">Prev</a></li>
+                    {% else %}
+                        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                        <li class="page-item disabled"><span class="page-link">Prev</span></li>
+                    {% endif %}
+
+                    <li class="page-item">
+                        <span class="page-link">
+                            Page {{ payments.number }} of {{ payments.paginator.num_pages }}
+                        </span>
+                    </li>
+
+                    {% if payments.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ payments.next_page_number }}">Next</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{ payments.paginator.num_pages }}">&raquo;</a></li>
+                    {% else %}
+                        <li class="page-item disabled"><span class="page-link">Next</span></li>
+                        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript and jQuery scripts (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
