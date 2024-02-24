@@ -99,7 +99,7 @@ body {
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
-  background-color: var(--bs-body-bg);
+  background-color: #C49102;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -167,6 +167,29 @@ h6, .h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  background-color: #f2f2f2;
+}
+.button-fr {
+  padding: 6px 12px;
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+.button-fr:hover {
+  background-color: #45a049;
 }
 
 abbr[title] {
@@ -512,13 +535,13 @@ legend + * {
   .box-area {
       width: 100%; /* Adjusting width for smaller screens */
       padding: 0 20px; /* Adding padding to the sides */
-      
+
   }
   .left-box {
-      
+
       height: auto; /* Allowing height to adjust based on content */
       overflow: visible; /* Ensuring content is not hidden */
-      
+
   }
   .right-box {
       padding: 20px; /* Adjusting padding for smaller screens */
@@ -2930,7 +2953,7 @@ textarea.form-control-lg {
 
 .btn-primary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #ffc800;
+  --bs-btn-bg: #C49102;
   --bs-btn-border-color: #ffc800;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #d9aa00;
@@ -3066,7 +3089,7 @@ textarea.form-control-lg {
 
 .btn-outline-primary {
   --bs-btn-color: #ffc800;
-  --bs-btn-border-color: #ffc800;
+  --bs-btn-border-color: black;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #ffc800;
   --bs-btn-hover-border-color: #ffc800;
@@ -8175,7 +8198,7 @@ textarea.form-control-lg {
 
 .text-muted {
   --bs-text-opacity: 1;
-  color: #6c757d !important;
+  color: 	#D3D3D3 !important;
 }
 
 .text-black-50 {
@@ -8241,8 +8264,10 @@ textarea.form-control-lg {
 
 .bg-light {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+  background-color: black !important;
+  color: #C49102;
 }
+
 
 .bg-dark {
   --bs-bg-opacity: 1;
@@ -11067,7 +11092,7 @@ header.masthead {
 .container1 {
   position: relative;
   overflow: hidden;
-  
+
   z-index: 1;
   color: #fff;
   display: flex;
@@ -11103,7 +11128,7 @@ header.masthead {
 .btn-register {
   z-index: 2; /* Ensure the button is above the background overlay */
   position: relative; /* Ensure z-index works properly */
-  
+
 }
 
 @media (max-width: 767px) {
@@ -11113,7 +11138,7 @@ header.masthead {
   }
 }
 
-/* 
+/*
 .. */
 header.masthead .masthead-subheading {
   z-index: 2;
@@ -11123,8 +11148,8 @@ header.masthead .masthead-subheading {
   line-height: 1.5rem;
   margin-bottom: 25px;
   font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  
-  
+
+
 }
 header.masthead .masthead-heading {
   z-index: 2;
@@ -11134,7 +11159,7 @@ header.masthead .masthead-heading {
   line-height: 3.25rem;
   margin-bottom: 2rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  
+
 }
 #director-of-sports {
   background-color: #f8f9fa; /* Background color for the section */
@@ -11439,7 +11464,7 @@ header.masthead .masthead-heading {
 #portfolio .portfolio-item .portfolio-caption {
   padding: 1.5rem;
   text-align: center;
-  background-color: #fff;
+  background-color: #303030;
 }
 #portfolio .portfolio-item .portfolio-caption .portfolio-caption-heading {
   font-size: 1.5rem;
@@ -11547,9 +11572,9 @@ header.masthead .masthead-heading {
   margin-left: 0;
   text-align: center;
   color: white;
-  border: 7px solid #e9ecef;
+  border: 7px solid black;
   border-radius: 100%;
-  background-color: #ffc800;
+  background-color: black;
 }
 .timeline > li .timeline-image h4, .timeline > li .timeline-image .h4 {
   font-size: 10px;
@@ -11750,3 +11775,7 @@ section#contact form#contactForm :-ms-input-placeholder {
       margin-top: 20px;
   }
 }
+
+
+
+
