@@ -117,4 +117,4 @@ class TeamCaptain(models.Model):
     sport = models.ForeignKey(Sport, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.name} - {self.college.name} - {self.sport.name}"
+        return f"{self.captain_name} - {self.college.name} - {self.sport.name}"
