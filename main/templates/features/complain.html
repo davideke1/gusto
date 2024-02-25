@@ -3,57 +3,59 @@
 {% block title %}Complains - GUSTO 2024{% endblock %}
 
 {% block content %}
-<div class="container d-flex justify-content-center align-items-center min-vh-100" style="margin-top: 100px;">
-    <div class="row">
+<<div class="container d-flex justify-content-center align-items-center min-vh-100" style="margin-top: 100px;">
+  <div class="row border rounded-5 p-3 bg-white shadow box-area">
+    <div class="row form-group">
         <div class="col-md-8 offset-md-2">
             <div class="header-text mb-4 text-center">
-                <h2 >Sports Fest Complaint Form</h2>
+                <h2>Sports Fest Complaint Form</h2>
             </div>
             <form method="post" action="{% url 'complain' %}" enctype="multipart/form-data">
                 {% csrf_token %}
 
                 <!-- Name Field -->
-                <div class="form-group">
-                    <label for="{{ form.name.id_for_label }}" class="form-label">Your Name:</label>
+                <div class="input-group mb-3">
+                  <label for="{{ form.name.id_for_label }}" class="form-label">Your Name:</label>
                     {{ form.name }}
                 </div>
 
                 <!-- Email Field -->
-                <div class="form-group">
+                <div class="input-group mb-3">
                     <label for="{{ form.email.id_for_label }}" class="form-label">Your Email:</label>
                     {{ form.email }}
                 </div>
 
                 <!-- Phone Number Field -->
-                <div class="form-group">
+                <div class="input-group mb-3">
                     <label for="{{ form.phone.id_for_label }}" class="form-label">Your Phone Number:</label>
                     {{ form.phone }}
                 </div>
 
                 <!-- College Name Field -->
-                <div class="form-group">
+                <div class="input-group mb-3">
                     <label for="{{ form.college.id_for_label }}" class="form-label">Your College Name:</label>
                     {{ form.college }}
                 </div>
 
                 <!-- Sport Field -->
-                <div class="form-group">
+                <div class="input-group mb-3">
                     <label for="{{ form.category.id_for_label }}" class="form-label">Selected Sport:</label>
                     {{ form.category }}
                 </div>
 
                 <!-- Complaint Field -->
-                <div class="form-group">
+                <div class="input-group mb-3">
                     <label for="{{ form.complaint.id_for_label }}" class="form-label">Your Complaint:</label>
                     {{ form.complaint }}
                 </div>
 
                 <!-- Submit Button -->
-                <div class="form-group text-center">
+                <div class="input-group mb-3 text-center">
                     <button type="submit" class="btn btn-primary btn-lg fs-6">Submit Complaint</button>
                 </div>
             </form>
         </div>
     </div>
+  </div>
 </div>
 {% endblock %}

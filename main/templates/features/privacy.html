@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - GUSTO 2024</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body style="color: black; padding-top: 56px;">
+
+    <!-- Navbar (assuming you have a fixed-top navbar) -->
+    <img src="{% static 'assets/img/about/5.png' %}" alt="GUSTO 2024" class="img-fluid custom-image mx-auto d-block" style="max-width: 25%; height: 10%;">
+    
+    <div class="container" style="padding: 20px;">
+
+        <h1>Privacy Policy - GUSTO 2024</h1>
+
+        <p><strong>Information Collection:</strong> We collect information from participants during the registration process for the GUSTO 2024 event. The information collected may include participant names, contact details, team information, and any other details required for event participation.</p>
+
+        <p><strong>Use of Information:</strong> The information collected is used for the purpose of event communication, updates, and result announcements. Participant names or team names may be displayed in event-related materials such as results and leaderboards.</p>
+
+        <p><strong>Data Security:</strong> We employ security measures to protect participant data and ensure the confidentiality of registration details. All collected information is stored securely and accessible only to authorized personnel.</p>
+
+        <p><strong>Event Photos and Videos:</strong> By participating in GUSTO 2024, participants acknowledge that event photos or videos may be captured and shared for promotional purposes. We respect the privacy of participants and will handle such media responsibly.</p>
+
+        <p><strong>Contact Information:</strong> For any questions or concerns regarding privacy, participants can contact us at <a href="mailto:gusto@gitam.edu">gusto@gitam.edu</a>.</p>
+
+        <!-- Button to go back home -->
+        <a href="{% url 'home' %}" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.25rem; margin-top: 20px;">Go Back Home</a>
+
+    </div>
+
+    <!-- Add Bootstrap JS and Popper.js if needed -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+

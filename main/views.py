@@ -35,8 +35,14 @@ def coreteam(request):
 # def register(request):
 #     return render(request, 'features/register.html')
 
-def gallery(request):
-    return render(request, 'features/test1.html')
+def privacy_policy(request):
+    return render(request, 'features/privacy.html')
+
+def termofuse(request):
+    return render(request, 'features/termofuse.html')
+
+def splash_screen(request):
+    return render(request, 'intro.html')
 
 
 

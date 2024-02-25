@@ -1,0 +1,84 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUSTO 2024</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        .splash-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff; /* Set your desired background color */
+        }
+        
+        .splash-logo {
+            animation: zoomInOut 2s infinite alternate, fadeInOut 2s ease-in-out 1.5s forwards;
+            /* Adjust animation durations and delays as needed */
+        }
+        
+        .splash-text {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeInOut 1s ease-in-out 3s forwards, bounce 0.5s ease-in-out 4s infinite alternate;
+            /* Adjust delay and animation durations as needed */
+        }
+        
+        @keyframes zoomInOut {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.5);
+            }
+        }
+        
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        
+            
+    </style>
+</head>
+<body>
+    <div class="splash-container">
+        <img src="{% static 'assets/img/about/5.png' %}" alt="GUSTO Logo" class="splash-logo">
+        <p class="splash-text">GUSTO 2024</p>
+    </div>
+
+    <script>
+        setTimeout(function() {
+            window.location.href = "{% url 'home' %}";
+        }, 2000);  // 6000 milliseconds = 6 seconds, adjust as needed
+    </script>
+</body>
+</html>

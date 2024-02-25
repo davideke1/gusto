@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use - GUSTO 2024</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body style="color: black; padding-top: 56px;">
+
+    <!-- Navbar (assuming you have a fixed-top navbar) -->
+    <img src="{% static 'assets/img/about/5.png' %}" alt="GUSTO 2024" class="img-fluid custom-image mx-auto d-block" style="max-width: 25%; height: 10%;">
+    
+    <div class="container" style="padding: 20px;">
+
+        <h1>Terms of Use - GUSTO 2024</h1>
+
+        <p><strong>Acceptance of Terms:</strong> By participating in GUSTO 2024, participants agree to abide by the terms and conditions outlined in this document.</p>
+
+        <p><strong>Participation Guidelines:</strong> Participants are expected to adhere to fair play and sportsmanship principles. Any violation of event rules may result in disqualification.</p>
+
+        <p><strong>Event Conduct:</strong> Participants are expected to conduct themselves responsibly and respectfully during GUSTO 2024. Any disruptive or inappropriate behavior may result in immediate disqualification.</p>
+
+        <p><strong>Intellectual Property:</strong> All event branding, logos, and promotional materials are the intellectual property of GUSTO 2024. Participants are granted the right to use event-related materials solely for personal, non-commercial purposes.</p>
+
+        <p><strong>Cancellation or Changes:</strong> GUSTO 2024 reserves the right to cancel or reschedule events under unforeseen circumstances. Participants will be promptly notified of any changes.</p>
+
+        <p><strong>Liability during Events:</strong> Participants acknowledge and accept the inherent risks associated with sports events. GUSTO 2024 and its organizers are not liable for injuries or accidents that may occur during the event.</p>
+
+        <p><strong>Governing Law:</strong> These terms are governed by and construed in accordance with the laws of [Your Jurisdiction]. Any legal actions arising from these terms will be resolved in the courts of [Your Jurisdiction].</p>
+
+        <!-- Button to go back home -->
+        <a href="{% url 'home' %}" style="text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.25rem; margin-top: 20px;">Go Back Home</a>
+
+    </div>
+
+    <!-- Add Bootstrap JS and Popper.js if needed -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
