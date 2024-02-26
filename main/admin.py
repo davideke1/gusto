@@ -1,7 +1,7 @@
 # main/admin.py
 
 from django.contrib import admin
-from .models import College, Payment, Sport, Team, ContactMessage, SportInformation, TeamMember, CarouselSlide, Complaint,TeamCaptain
+from .models import College, Payment, Sport, Team, ContactMessage, SportInformation, TeamMember, CarouselSlide, Complaint,TeamCaptain,GameResult
 
 
 class CollegeAdmin(admin.ModelAdmin):
@@ -23,7 +23,7 @@ class PaymentAdmin(admin.ModelAdmin):
     list_filter = ('payment_date',)
 
 class SportAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('name','sport_amount',)
     search_fields = ('name',)
 
 class TeamAdmin(admin.ModelAdmin):
@@ -81,3 +81,9 @@ class TeamCaptainAdmin(admin.ModelAdmin):
 
 admin.site.register(TeamCaptain, TeamCaptainAdmin)
 
+class GameResultAdmin(admin.ModelAdmin):
+    list_display = ['sport', 'team_a', 'team_b', 'score_a', 'score_b', 'result']
+    list_filter = ['sport']
+    search_fields = ['team_a', 'team_b']
+
+admin.site.register(GameResult, GameResultAdmin)

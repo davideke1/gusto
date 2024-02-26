@@ -251,7 +251,7 @@ class AllComplaintsView(TemplateView):
 
         selected_sport = self.request.GET.get('sport')
         if selected_sport and selected_sport != 'all':
-            complaints_list = complaints_list.filter(sport__name=selected_sport)
+            complaints_list = complaints_list.filter(category__name=selected_sport)
 
         complaints_per_page = 3
 

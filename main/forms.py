@@ -10,19 +10,21 @@ class PaymentForm(forms.ModelForm):
 
         widgets = {
             'reference_code': forms.TextInput(attrs={
-                'class': 'form-control form-control-lg bg-light fs-6',
+                'class': 'form-control form-control-lg bg-light fs-6 text-white',
                 'placeholder': 'Enter payment transaction ID',
                 'required': 'required',
             }),
             'amount': forms.TextInput(attrs={
-                'class': 'form-control form-control-lg bg-light fs-6',
+                'class': 'form-control form-control-lg bg-light fs-6 text-white',
                 'placeholder': 'Enter Amount',
+                'readonly': 'readonly',
                 'required': 'required',
             }),
             'payment_date': forms.TextInput(attrs={
-                'class': 'form-control form-control-lg bg-light fs-6',
+                'class': 'form-control form-control-lg bg-light fs-6 text-white',
                 'type': 'date',
                 'required': 'required',
+                
                 'value': date.today().strftime('%Y-%m-%d'),
             })
         }
@@ -33,13 +35,13 @@ class TeamCaptainForm(forms.ModelForm):
         fields = ['captain_name', 'phone']  # Change 'name' to 'captain_name'
         widgets = {
             'captain_name': forms.TextInput(attrs={
-                'class': 'form-control form-control-lg bg-light fs-6',
+                'class': 'form-control form-control-lg bg-light fs-6 text-white',
                 'placeholder': 'Enter Team Captain Name',
                 'required': 'required',
                 'type': 'text'
             }),
             'phone': forms.TextInput(attrs={
-                'class': 'form-control form-control-lg bg-light fs-6',
+                'class': 'form-control form-control-lg bg-light fs-6 text-white',
                 'placeholder': 'Enter Team Captain Phone Number',
                 'required': 'required',
                 'type': 'tel',
@@ -51,12 +53,14 @@ class RegistrationForm(forms.ModelForm):
     sport = forms.ModelChoiceField(
         queryset=Sport.objects.all(),
         widget=forms.Select(attrs={
-            'class': 'form-select form-select-lg bg-light fs-6',
+            'class': 'form-select form-select-lg bg-light fs-6 text-white',
             'required': 'required',
             'id': 'id_sport',
         }),
         required=True,
     )
+
+    
 
     # team_captain_form = TeamCaptainForm()  # Instantiate TeamCaptainForm
 
@@ -65,7 +69,7 @@ class RegistrationForm(forms.ModelForm):
         fields = ['name']
         widgets = {
             'name': forms.TextInput(attrs={
-                'class': 'form-control form-control-lg bg-light fs-6',
+                'class': 'form-control form-control-lg bg-light fs-6 text-white',
                 'placeholder': 'Enter College Name',
                 'required': 'required',
                 'type': 'text'

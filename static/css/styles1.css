@@ -528,7 +528,82 @@ legend + * {
   border-radius: 30px;
 }
 
+/*------results*/
+.body-score {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #C49102;
 
+}
+.container-score {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-score {
+  width: 100%;
+  background-color: black;
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  margin-bottom: 20px;
+  transition: transform 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  text-align: center; /* Align text in center */
+}
+.card-score:hover {
+  transform: scale(1.03);
+}
+.team-score {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.score-container {
+  border: 2px solid #C49102; /* Highlight border color */
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px; /* Increase font size for visibility */
+  font-weight: bold; /* Make font bold for emphasis */
+  color: white; /* Set color for visibility */
+}
+.result {
+  font-style: italic;
+  margin-top: 10px;
+}
+.filterscore {
+  margin-bottom: 20px;
+}
+.sports-score {
+font-style: italic;
+color: #C49102; /* Lighter grey color */
+padding: 10px; /* Add padding */
+}
+.select-score {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: black; /* Match filter background with overall theme */
+  color: white; /* Set text color */
+  border: none; /* Remove default border */
+  outline: none; /* Remove focus outline */
+  cursor: pointer; /* Change cursor on hover */
+}
+.option-score {
+  background-color: black; /* Match dropdown options with overall theme */
+  color: white; /* Set text color for options */
+}
 /*------------ For small screens------------*/
 
 @media only screen and (max-width: 768px) {

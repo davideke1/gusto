@@ -31,7 +31,8 @@ class Payment(models.Model):
 
 class Sport(models.Model):
     name = models.CharField(max_length=100)
-
+    sport_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    
     def __str__(self):
         return self.name
     
@@ -76,8 +77,8 @@ class TeamMember(models.Model):
     name = models.CharField(max_length=255)
     role = models.CharField(max_length=255)
     image = models.ImageField(upload_to=team_member_image_upload)
-    twitter_profile = models.URLField(blank=True)
-    facebook_profile = models.URLField(blank=True)
+    instagram_profile = models.URLField(blank=True)
+    mail_profile = models.URLField(blank=True)
     linkedin_profile = models.URLField(blank=True)
 
     def __str__(self):
@@ -118,3 +119,15 @@ class TeamCaptain(models.Model):
 
     def __str__(self):
         return f"{self.captain_name} - {self.college.name} - {self.sport.name}"
+
+
+class GameResult(models.Model):
+    sport = models.ForeignKey(Sport, on_delete=models.CASCADE)
+    team_a = models.CharField(max_length=50)
+    team_b = models.CharField(max_length=50)
+    score_a = models.CharField(max_length=10)
+    score_b = models.CharField(max_length=10)
+    result = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.sport.name} - {self.team_a} vs {self.team_b}"

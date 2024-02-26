@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block content %}
+    <body class="body-score">
+
+    <div class="container-score" style='margin-top:150px;'>
+        <div class="filterscore">
+            <label for="sports-filterscore" style="color: black;">Filter by Sport:</label>
+            <select class="select-score" id="sports-filterscore">
+                <option class="option-score" value="all">All Sports</option>
+                {% for sport in sports %}
+                    <option class="option-score" value="{{ sport.name|lower }}">{{ sport.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    
+        {% for game_result in game_results %}
+            <div class="card-score" data-sport="{{ game_result.sport.name|lower }}">
+                <div class="sports-score">{{ game_result.sport.name|upper }}</div>
+                <div class="team-score">{{ game_result.team_a }} vs {{ game_result.team_b }}</div>
+                <div class="score-container">
+                    <div class="score">
+                        <div>{{ game_result.score_a }}</div>
+                        <div>-</div>
+                        <div>{{ game_result.score_b }}</div>
+                    </div>
+                </div>
+                <div class="result">{{ game_result.result }}</div>
+            </div>
+        {% endfor %}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center mt-4">
+                {% if game_results.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page=1">&laquo;</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ game_results.previous_page_number }}">Prev</a></li>
+                {% else %}
+                    <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                    <li class="page-item disabled"><span class="page-link">Prev</span></li>
+                {% endif %}
+    
+                <li class="page-item">
+                    <span class="page-link">
+                        Page {{ game_results.number }} of {{ game_results.paginator.num_pages }}
+                    </span>
+                </li>
+    
+                {% if game_results.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ game_results.next_page_number }}">Next</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ game_results.paginator.num_pages }}">&raquo;</a></li>
+                {% else %}
+                    <li class="page-item disabled"><span class="page-link">Next</span></li>
+                    <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    
+    <script>
+        document.getElementById('sports-filterscore').addEventListener('change', function() {
+            var selectedSport = this.value;
+            var cards = document.querySelectorAll('.card-score');
+    
+            cards.forEach(function(card) {
+                var cardSport = card.getAttribute('data-sport');
+                if (selectedSport === 'all' || selectedSport === cardSport) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+    
+{% endblock %}

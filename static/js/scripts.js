@@ -14,6 +14,8 @@ $(document).ready(function(){
 $('#id_sport').prepend('<option value="" selected disabled>Select Sport</option>');
 });
 
+// JavaScript to dynamically update amount based on selected sport
+
 
 window.addEventListener('DOMContentLoaded', event => {
 

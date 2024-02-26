@@ -90,6 +90,9 @@
                         {{ payment_form.amount }}
                     </div>
                     <div class="input-group mb-3 input-group">
+                        <div class="col-12 ">
+                            <label for="{{ payment_form.payment_date_for_label }}" class="form-label">Payment Date</label>
+                        </div>
                         {{ payment_form.payment_date }}
                     </div>
                 
@@ -100,5 +103,38 @@
 
     </div>
 </div>
+
+<script>
+    console.log('Script executed.');
+
+    // JavaScript to dynamically update amount based on selected sport
+    document.addEventListener('DOMContentLoaded', function () {
+        var sportSelect = document.getElementById('{{ registration_form.sport.id_for_label }}');
+        var amountField = document.getElementById('{{ payment_form.amount.id_for_label }}');
+        var sportAmounts = {{ sport_amounts|safe }};
+
+
+        // Function to update amount based on the selected sport
+        function updateAmount() {
+            var selectedOption = sportSelect.options[sportSelect.selectedIndex];
+        
+            var selectedSport = selectedOption.textContent.trim();
+            var amount = sportAmounts[selectedSport] || '';
+            
+            amountField.value = amount;
+            
+        
+            // Print the amount in the console
+        }
+        
+        // Add event listeners for sport selection change
+        sportSelect.addEventListener('change', updateAmount);
+
+        // Set the initial value when the page loads
+        updateAmount();
+    });
+</script>
+
+
 
 {% endblock %}

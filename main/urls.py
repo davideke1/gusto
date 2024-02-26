@@ -11,4 +11,5 @@ urlpatterns = [
     # path('gallery/', views.gallery, name='gallery'),
     path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
     path('term-of-use/', views.termofuse, name='termofuse'),
+    path('results/', views.result, name='result'),
 ]

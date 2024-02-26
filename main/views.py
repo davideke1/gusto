@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from .forms import  RegistrationForm, PaymentForm,ContactForm,ComplaintForm,TeamCaptainForm
-from .models import College, Team, Sport, Payment,CarouselSlide, TeamMember,SportInformation
+from .models import College, Team, Sport, Payment,CarouselSlide, TeamMember,SportInformation,GameResult
 from django.contrib import messages
-
-
+from django.http import JsonResponse
+from django.core.serializers.json import DjangoJSONEncoder
+import json
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from django.shortcuts import render, redirect
 
@@ -44,7 +46,47 @@ def termofuse(request):
 def splash_screen(request):
     return render(request, 'intro.html')
 
+# def result(request):
+#     return render(request,"features/results.html")
 
+# def result(request):
+#     sports = Sport.objects.all()
+#     game_results = GameResult.objects.all()
+
+#     context = {
+#         'sports': sports,
+#         'game_results': game_results,
+#     }
+
+#     return render(request, 'features/results.html', context)
+
+def result(request):
+    sports = Sport.objects.all()
+    game_results = GameResult.objects.all()
+
+    # Number of items per page
+    items_per_page = 10
+    paginator = Paginator(game_results, items_per_page)
+
+    # Get the current page number from the request's GET parameters
+    page = request.GET.get('page')
+
+    try:
+        # Get the requested page
+        game_results = paginator.page(page)
+    except PageNotAnInteger:
+        # If the page parameter is not an integer, default to the first page
+        game_results = paginator.page(1)
+    except EmptyPage:
+        # If the requested page is out of range (e.g., 9999), deliver the last page
+        game_results = paginator.page(paginator.num_pages)
+
+    context = {
+        'sports': sports,
+        'game_results': game_results,
+    }
+
+    return render(request, 'features/results.html', context)
 
 def complains(request):
     if request.method == 'POST':
@@ -70,11 +112,15 @@ def teams(request):
 
 
 def register(request):
+    sport_amounts = {sport.name: str(sport.sport_amount) for sport in Sport.objects.all()}
+    
+    # Convert to JSON format
+    sport_amounts_json = json.dumps(sport_amounts, cls=DjangoJSONEncoder)
     if request.method == 'POST':
         registration_form = RegistrationForm(request.POST)
         payment_form = PaymentForm(request.POST)
         team_captain_form = TeamCaptainForm(request.POST)
-
+        
         if registration_form.is_valid() and payment_form.is_valid() and team_captain_form.is_valid():
             college = registration_form.save(commit=False)
             college.save()
@@ -98,7 +144,8 @@ def register(request):
         payment_form = PaymentForm()
         team_captain_form = TeamCaptainForm()
 
-    return render(request, 'features/register.html', {'registration_form': registration_form, 'payment_form': payment_form, 'team_captain_form': team_captain_form})
+    return render(request, 'features/register.html', {'registration_form': registration_form, 'payment_form': payment_form, 'team_captain_form': team_captain_form, 'sport_amounts': sport_amounts_json})
+
 
 # def register(request):
 #     if request.method == 'POST':
