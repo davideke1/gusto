@@ -1,0 +1,9 @@
+{% extends 'base1.html' %}
+
+{% block content %}
+  <h2>Game Result Details</h2>
+  <p>Team A: {{ game_result.team_a }}</p>
+  <p>Team B: {{ game_result.team_b }}</p>
+  <!-- Add other fields as needed -->
+  <a href="{% url 'game_result_list' %}">Back to list</a>
+{% endblock %}

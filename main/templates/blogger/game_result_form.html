@@ -1,0 +1,38 @@
+{% extends 'base1.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>Create/Update Game Result</h2>
+    
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="{{ form.sport.id_for_label }}">Sport:</label>
+        {{ form.sport }}
+      </div>
+      <div class="form-group">
+        <label for="{{ form.team_a.id_for_label }}">Team A:</label>
+        {{ form.team_a }}
+      </div>
+      <div class="form-group">
+        <label for="{{ form.team_b.id_for_label }}">Team B:</label>
+        {{ form.team_b }}
+      </div>
+      <div class="form-group">
+        <label for="{{ form.score_a.id_for_label }}">Score A:</label>
+        {{ form.score_a }}
+      </div>
+      <div class="form-group">
+        <label for="{{ form.score_b.id_for_label }}">Score B:</label>
+        {{ form.score_b }}
+      </div>
+      <div class="form-group">
+        <label for="{{ form.result.id_for_label }}">Result:</label>
+        {{ form.result }}
+      </div>
+      
+
+      <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+  </div>
+{% endblock %}

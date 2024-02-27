@@ -5,9 +5,12 @@ from django.contrib import messages
 from django.http import JsonResponse
 from django.core.serializers.json import DjangoJSONEncoder
 import json
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
 
 def home(request):
     # Query all CarouselSlide objects from the database
@@ -220,3 +223,49 @@ def team_member_upload(request):
         form = TeamMemberForm()
 
     return render(request, 'features/team_member_upload.html', {'form': form})
+
+class BloggerLoginView(LoginView):
+    template_name = 'blogger/blogger_login.html'  # Specify the template for the login page
+    success_url = reverse_lazy('game_result_list')  # Redirect to this URL after successful login
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # You can add additional context data if needed
+        return context
+
+class GameResultListView(LoginRequiredMixin, ListView):
+    model = GameResult
+    template_name = 'blogger/game_result_list.html'
+    context_object_name = 'game_results'
+    login_url = '/blogger-login/'  # Specify the blogger login URL
+
+class GameResultCreateView(LoginRequiredMixin, CreateView):
+    model = GameResult
+    form_class = GameResultForm
+    template_name = 'blogger/game_result_form.html'
+    success_url = reverse_lazy('game_result_list')
+    login_url = '/blogger-login/'
+
+class GameResultUpdateView(LoginRequiredMixin, UpdateView):
+    model = GameResult
+    form_class = GameResultForm
+    template_name = 'blogger/game_result_form.html'
+    success_url = reverse_lazy('game_result_list')
+    login_url = '/blogger-login/'
+
+class GameResultDeleteView(LoginRequiredMixin, DeleteView):
+    model = GameResult
+    template_name = 'blogger/game_result_confirm_delete.html'
+    success_url = reverse_lazy('game_result_list')
+    login_url = '/blogger-login/'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['game_result'] = self.get_object()
+        return context
+
+class GameResultDetailView(LoginRequiredMixin, DetailView):
+    model = GameResult
+    template_name = 'blogger/game_result_detail.html'
+    context_object_name = 'game_result'
+    login_url = '/blogger-login/'

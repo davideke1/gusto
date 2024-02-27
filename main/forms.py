@@ -170,7 +170,7 @@ class ComplaintForm(forms.ModelForm):
 class GameResultForm(forms.ModelForm):
     class Meta:
         model = GameResult
-        fields = ['team_a', 'team_b', 'score_a', 'score_b', 'result']
+        fields = ['sport','team_a', 'team_b', 'score_a', 'score_b', 'result']
 
     def __init__(self, *args, **kwargs):
         super(GameResultForm, self).__init__(*args, **kwargs)

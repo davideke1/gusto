@@ -13,5 +13,13 @@ urlpatterns = [
     path('term-of-use/', views.termofuse, name='termofuse'),
     path('results/', views.result, name='result'),
     path('upload/', views.team_member_upload, name='team_member_upload'),
+
+    # blogger
+    path('game/', views.GameResultListView.as_view(), name='game_result_list'),
+    path('game/create/', views.GameResultCreateView.as_view(), name='game_result_create'),
+    path('game/<int:pk>/update/', views.GameResultUpdateView.as_view(), name='game_result_update'),
+    path('game/<int:pk>/delete/', views.GameResultDeleteView.as_view(), name='game_result_delete'),
+    path('game/<int:pk>/', views.GameResultDetailView.as_view(), name='game_result_detail'),
+    path('blogger-login/', views.BloggerLoginView.as_view(), name='blogger_login'),
 ]
 

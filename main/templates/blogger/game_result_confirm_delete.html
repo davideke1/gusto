@@ -1,0 +1,27 @@
+{% extends 'base1.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">Confirm Delete</h2>
+        
+        {% if game_result %}
+          <p class="card-text">
+            Are you sure you want to delete the game result for
+            <strong>{{ game_result.team_a }} vs {{ game_result.team_b }}</strong>?
+          </p>
+        {% else %}
+          <p class="card-text">Are you sure you want to delete this game result?</p>
+        {% endif %}
+        
+        <form method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">Yes, delete</button>
+        </form>
+        
+        <a href="{% url 'game_result_list' %}" class="btn btn-secondary mt-2">Cancel</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
