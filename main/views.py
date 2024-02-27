@@ -11,6 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
+from django.contrib.auth import logout
 
 def home(request):
     # Query all CarouselSlide objects from the database
@@ -269,3 +270,9 @@ class GameResultDetailView(LoginRequiredMixin, DetailView):
     template_name = 'blogger/game_result_detail.html'
     context_object_name = 'game_result'
     login_url = '/blogger-login/'
+
+
+def logout_request(request):
+    logout(request)
+    messages.success(request, 'You were successfully Logged Out')
+    return redirect('blogger_login')

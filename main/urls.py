@@ -21,5 +21,6 @@ urlpatterns = [
     path('game/<int:pk>/delete/', views.GameResultDeleteView.as_view(), name='game_result_delete'),
     path('game/<int:pk>/', views.GameResultDetailView.as_view(), name='game_result_detail'),
     path('blogger-login/', views.BloggerLoginView.as_view(), name='blogger_login'),
+    path("logout/", views.logout_request, name="logout"),
 ]
 
