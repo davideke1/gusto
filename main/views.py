@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import  RegistrationForm, PaymentForm,ContactForm,ComplaintForm,TeamCaptainForm
+from .forms import  RegistrationForm, PaymentForm,ContactForm,ComplaintForm,TeamCaptainForm,GameResultForm,TeamMemberForm
 from .models import College, Team, Sport, Payment,CarouselSlide, TeamMember,SportInformation,GameResult
 from django.contrib import messages
 from django.http import JsonResponse
@@ -7,7 +7,7 @@ from django.core.serializers.json import DjangoJSONEncoder
 import json
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 def home(request):
     # Query all CarouselSlide objects from the database
@@ -174,3 +174,49 @@ def error_404(request, exception):
  
 def error_500(request):
     return render(request, '500.html', status=500)
+
+
+def game_result_list(request):
+    game_results = GameResult.objects.all()
+    return render(request, 'game_result_list.html', {'game_results': game_results})
+
+def game_result_detail(request, pk):
+    game_result = get_object_or_404(GameResult, pk=pk)
+    return render(request, 'game_result_detail.html', {'game_result': game_result})
+
+def game_result_create(request):
+    if request.method == 'POST':
+        form = GameResultForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('game_result_list')
+    else:
+        form = GameResultForm()
+    return render(request, 'game_result_form.html', {'form': form})
+
+def game_result_update(request, pk):
+    game_result = get_object_or_404(GameResult, pk=pk)
+    form = GameResultForm(request.POST or None, instance=game_result)
+    if form.is_valid():
+        form.save()
+        return redirect('game_result_list')
+    return render(request, 'game_result_form.html', {'form': form})
+
+def game_result_delete(request, pk):
+    game_result = get_object_or_404(GameResult, pk=pk)
+    if request.method == 'POST':
+        game_result.delete()
+        return redirect('game_result_list')
+    return render(request, 'game_result_confirm_delete.html', {'game_result': game_result})
+
+
+def team_member_upload(request):
+    if request.method == 'POST':
+        form = TeamMemberForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('coreteam')  # Redirect to a page showing the list of team members
+    else:
+        form = TeamMemberForm()
+
+    return render(request, 'features/team_member_upload.html', {'form': form})

@@ -1,7 +1,7 @@
 from datetime import date
 from django.forms.widgets import DateInput
 from django import forms
-from .models import College, Payment, Sport,ContactMessage, Complaint, TeamCaptain
+from .models import College, Payment, Sport,ContactMessage, Complaint, TeamCaptain,GameResult,TeamMember
 
 class PaymentForm(forms.ModelForm):
     class Meta:
@@ -165,3 +165,25 @@ class ComplaintForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ComplaintForm, self).__init__(*args, **kwargs)
         self.fields['category'].queryset = Sport.objects.all()
+
+
+class GameResultForm(forms.ModelForm):
+    class Meta:
+        model = GameResult
+        fields = ['team_a', 'team_b', 'score_a', 'score_b', 'result']
+
+    def __init__(self, *args, **kwargs):
+        super(GameResultForm, self).__init__(*args, **kwargs)
+        self.fields['team_a'].widget.attrs['placeholder'] = 'Team A'
+        self.fields['team_b'].widget.attrs['placeholder'] = 'Team B'
+        # Add similar placeholder attributes for other fields if needed
+
+    def clean(self):
+        cleaned_data = super().clean()
+        # Add any additional validation logic here
+        return cleaned_data
+    
+class TeamMemberForm(forms.ModelForm):
+    class Meta:
+        model = TeamMember
+        fields = ['name', 'role', 'image', 'instagram_profile', 'mail_profile', 'linkedin_profile']
