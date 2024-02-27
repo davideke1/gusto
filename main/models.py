@@ -1,6 +1,8 @@
 # main/models.py
 import os
 from django.db import models
+from cloudinary.models import CloudinaryField
+from django.core.files import File
 
 class College(models.Model):
     name = models.CharField(max_length=100)
@@ -78,7 +80,7 @@ class TeamMember(models.Model):
     role = models.CharField(max_length=255)
     image = models.ImageField(upload_to=team_member_image_upload)
     instagram_profile = models.URLField(blank=True)
-    mail_profile = models.URLField(blank=True)
+    mail_profile = models.EmailField(blank=True)
     linkedin_profile = models.URLField(blank=True)
 
     def __str__(self):

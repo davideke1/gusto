@@ -14,3 +14,4 @@ urlpatterns = [
     path('results/', views.result, name='result'),
     path('upload/', views.team_member_upload, name='team_member_upload'),
 ]
+
