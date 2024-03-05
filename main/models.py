@@ -130,6 +130,7 @@ class GameResult(models.Model):
     score_a = models.CharField(max_length=10)
     score_b = models.CharField(max_length=10)
     result = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.sport.name} - {self.team_a} vs {self.team_b}"

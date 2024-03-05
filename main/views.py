@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import  RegistrationForm, PaymentForm,ContactForm,ComplaintForm,TeamCaptainForm,GameResultForm,TeamMemberForm
 from .models import College, Team, Sport, Payment,CarouselSlide, TeamMember,SportInformation,GameResult
 from django.contrib import messages
-from django.http import JsonResponse
+from django.contrib.auth import logout
 from django.core.serializers.json import DjangoJSONEncoder
 import json
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
