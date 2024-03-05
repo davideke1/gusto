@@ -5,6 +5,8 @@
 
 {% block body_class %}other-page{% endblock %}
 {% block content%}
+
+
 <div class="container d-flex justify-content-center align-items-center min-vh-100 register">
 
     <div class="row border rounded-5 p-3 bg-white shadow box-area">
@@ -27,13 +29,14 @@
                     </button>
                 </a> {% endcomment %}
                 
-                <a href="https://gevents.gitam.edu/registration/NzEz" target="_blank" style="text-decoration: none;">
+                <div id="cricketRegistration" style="text-align: center;">
                     <button type="button" class="btn btn-primary btn-round btn-block mb-3 btn-hover-primary btn-primary-custom" style="margin-top:30px; background-color: #007BFF; color: #FFFFFF; border-color: #007BFF; font-size: 22px;"
                         onmouseover="this.style.backgroundColor='#fc6b03'; this.style.borderColor='#fc6b03';"
                         onmouseout="this.style.backgroundColor='#007BFF'; this.style.borderColor='#007BFF';">
                         Click for cricket payment
                     </button>
-                </a>
+                    {% comment %} <p id="registrationStatus" style="color: #dc3545; font-size: 18px;"></p> {% endcomment %}
+                </div>
             
                 <a href="https://gevents.gitam.edu/registration/NzA4/" target="_blank" style="text-decoration: none;">
                     <button type="button" class="btn btn-outline-primary btn-round btn-block" style="color:white; font-size: 18px;">
@@ -133,6 +136,21 @@
         // Set the initial value when the page loads
         updateAmount();
     });
+
+    var isCricketRegistrationClosed = true; // Set this variable based on your logic
+
+    // Disable the link and update the button text if registration is closed
+    if (isCricketRegistrationClosed) {
+        var cricketButton = document.querySelector('#cricketRegistration button');
+        var registrationStatus = document.querySelector('#registrationStatus');
+
+        cricketButton.disabled = true;
+        cricketButton.style.backgroundColor = '#6c757d'; // Set the disabled button color
+        cricketButton.style.borderColor = '#6c757d'; // Set the disabled button border color
+
+        cricketButton.innerHTML = 'Cricket registration is closed';
+        registrationStatus.innerHTML = 'Sorry, cricket registration is currently closed.';
+    }
 </script>
 
 

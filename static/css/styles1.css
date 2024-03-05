@@ -516,7 +516,29 @@ legend + * {
 }
 
 /*------------ Custom Placeholder ------------*/
+/* .scrolling-text-container {
+  overflow: hidden;
+  position: relative;
+  top: 110px; /* Adjust this value based on the height of your navbar */
+}
 
+.scrolling-text {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scrollText 10s linear infinite;
+  padding-right: 100%; /* Push the text off-screen initially */
+  z-index: 1;
+  color: white;
+}
+
+@keyframes scrollText {
+  from {
+      transform: translateX(100%);
+  }
+  to {
+      transform: translateX(-100%);
+  }
+} */
 ::placeholder{
   font-size: 16px;
 }

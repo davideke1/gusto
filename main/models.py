@@ -1,7 +1,7 @@
 # main/models.py
 import os
 from django.db import models
-from cloudinary.models import CloudinaryField
+
 from django.core.files import File
 
 class College(models.Model):

@@ -5,11 +5,26 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+
+        <!-- Open Graph Meta Tags (for social media) -->
+        <meta property="og:title" content="GUSTO 2024 - GITAM Hyderabad Annual Sports Fest" />
+        <meta property="og:description" content="Get ready for GUSTO 2024, the annual sports fest at GITAM Hyderabad! Join us for an adrenaline-pumping extravaganza featuring a myriad of sports, exciting competitions, and a celebration of sportsmanship and camaraderie." />
+        <meta property="og:image" content="URL to your event image" />
+        <meta property="og:url" content="https://gusto.gitam.edu" />
+        <meta property="og:type" content="website" />
+
+        <!-- Twitter Card Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="GUSTO 2024 - GITAM Hyderabad Annual Sports Fest" />
+        <meta name="twitter:description" content="Get ready for GUSTO 2024, the annual sports fest at GITAM Hyderabad! Join us for an adrenaline-pumping extravaganza featuring a myriad of sports, exciting competitions, and a celebration of sportsmanship and camaraderie." />
+        <meta name="twitter:image" content="URL to your event image" />
+        <meta name="twitter:creator" content="@YourTwitterHandle" />
+
+        <meta name="description" content="Get ready for GUSTO 2024, the annual sports fest at GITAM Hyderabad! Join us for an adrenaline-pumping extravaganza featuring a myriad of sports, exciting competitions, and a celebration of sportsmanship and camaraderie." />
+        <meta name="author" content="GITAM Hyderabad" />
         <title>{% block title %}GUSTO 2024{% endblock %}</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon1.ico' %}" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -57,6 +72,13 @@
                 </div>
             </div>
         </nav>
+        {% comment %} <div class="scrolling-text-container">
+            <!-- Duplicate your text for continuous scrolling -->
+            <div class="scrolling-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac elit eu odio feugiat gravida ut at odio. Quisque hendrerit vestibulum tristique.
+            </div>
+            <!-- Duplicate your text for continuous scrolling -->
+        </div> {% endcomment %}
  
         <!-- Masthead-->
         {% block content %}
@@ -67,7 +89,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-4 text-lg-start">Copyright &copy; GUSTO 2024</div>
                     <div class="col-lg-4 my-3 my-lg-0">
-                        <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/gusto.2024?utm_source=qr&igsh=MWlja2RiNDF3end1aQ==" aria-label="Instagram" target="_blank"><i class="c"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/gusto.2024?utm_source=qr&igsh=MWlja2RiNDF3end1aQ==" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a class="btn btn-dark btn-social mx-2" href="mailto:gusto@gitam.edu" aria-label="Mail"><i class="fas fa-envelope"></i></a>
                         <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
